@@ -2,6 +2,8 @@
 
 Fix text typed in the wrong keyboard layout: select it, press **Ctrl+Alt+W**, and it's retyped in the right language, Hebrew and English in both directions, with no keylogger.
 
+**Supports Windows 10 and 11.**
+
 [![Tests](https://github.com/dotcomico/keyboard-wizard-hotkey/actions/workflows/tests.yml/badge.svg)](https://github.com/dotcomico/keyboard-wizard-hotkey/actions/workflows/tests.yml)
 ![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue)
 ![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D6)
@@ -88,6 +90,7 @@ The log is `%APPDATA%\KeyboardWizard\kbwizard.log` (rotating, 1 MB x 2 backups).
 - **The target app's own Ctrl+C** may still appear in Win+V history. That copy is made by the app you're in, so Keyboard Wizard can't mark it as excluded.
 - **Read-only text:** nothing changes. The paste is ignored by the target, and the clipboard is still restored.
 - **Short delay.** Each conversion waits 0.25 s after pasting before restoring the clipboard (see design decisions below).
+- **Windows only.** Linux and macOS aren't supported: the hotkey, key injection, clipboard handling and language switch all use Win32 APIs. The conversion logic in `kbwizard/core/` has no OS calls, so a port would only need new adapters.
 - **English (US QWERTY) and Hebrew only** for now. The layout tables are keyed by physical scan code, so adding a language means adding a table.
 
 ## For developers
