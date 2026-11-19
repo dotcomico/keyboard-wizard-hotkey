@@ -7,6 +7,8 @@ Fix text typed in the wrong keyboard layout: select it, press **Ctrl+Alt+W**, an
 ![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D6)
 ![Python 3.14](https://img.shields.io/badge/python-3.14-3776AB)
 
+![Demo: "akuo guko" is selected and Ctrl+Alt+W turns it into "שלום עולם", then "יקךךם 'םרךג" becomes "hello world"](docs/demo.gif)
+
 ```
 You typed (English layout on):   akuo kl tbh
 Select it, press Ctrl+Alt+W:     שלום לך אני
