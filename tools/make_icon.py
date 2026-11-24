@@ -74,7 +74,6 @@ def _draw_glyph(image: Image.Image) -> None:
     target_width = size * (0.70 if len(text) > 1 else 0.62)
     px = max(6, size)
     font = _font(px)
-    # Shrink until it fits.
     while px > 6:
         left, top, right, bottom = d.textbbox((0, 0), text, font=font)
         if right - left <= target_width and bottom - top <= size * 0.55:
