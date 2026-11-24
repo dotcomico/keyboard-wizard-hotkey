@@ -1,3 +1,5 @@
+<img src="assets/logo.png" alt="Keyboard Wizard icon: a blue keycap with the letters KW" width="96" align="right">
+
 # Keyboard Wizard
 
 Fix text typed in the wrong keyboard layout: select it, press **Ctrl+Alt+W**, and it's retyped in the right language, Hebrew and English in both directions, with no keylogger.
@@ -161,8 +163,8 @@ kbwizard/
   core/        pure conversion logic: scan-code layout tables and the converter (no I/O, no Win32)
 tests/         unit tests, every OS call faked
 manual_tests/  live-desktop checklist and scripts
-tools/         layout cross-check against Windows, icon generator
-assets/        tray and exe icon
+tools/         layout cross-check against Windows, icon and logo generator, notices generator
+assets/        tray and exe icon, README logo, GitHub social preview (all from tools/make_icon.py)
 ```
 
 Dependencies point one way: `app` > `win32` > `core`. The pure modules are what make most of the logic unit-testable.
