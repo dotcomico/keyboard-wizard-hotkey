@@ -9,13 +9,13 @@ class Status(Enum):
     """A pipeline status whose value is its display text."""
 
     READY = "Ready."
-    CONVERTED_TO_HE = "Converted to Hebrew."
-    CONVERTED_TO_EN = "Converted to English."
+    CONVERTED_TO_HE = "Fixed layout: English → Hebrew."
+    CONVERTED_TO_EN = "Fixed layout: Hebrew → English."
     NO_TEXT_SELECTED = "No text selected."
     NOTHING_TO_CONVERT = "Nothing to convert."
     FOCUS_CHANGED = "Window changed — nothing pasted."
-    LAYOUT_NOT_INSTALLED_HE = "Converted, but the Hebrew keyboard isn't installed."
-    LAYOUT_NOT_INSTALLED_EN = "Converted, but the English keyboard isn't installed."
+    LAYOUT_NOT_INSTALLED_HE = "Fixed, but the Hebrew keyboard isn't installed."
+    LAYOUT_NOT_INSTALLED_EN = "Fixed, but the English keyboard isn't installed."
     HOTKEY_UNAVAILABLE = "The hotkey is used by another app."
     CONVERT_FAILED = "Conversion failed — see log."
 

@@ -38,7 +38,7 @@ This file is the **end-to-end** checklist for the whole app.
 Expected: `akuo` is replaced by `שלום`. The input indicator on the taskbar
 switches to Hebrew (typing now produces Hebrew). The clipboard still holds
 `CLIPCHECK`. No balloon (successful conversions are silent); the tooltip
-reads `Converted to Hebrew.`
+reads `Fixed layout: English → Hebrew.`
 
 ## 2. Hebrew → English (and the hotkey under the Hebrew layout)
 
@@ -67,7 +67,7 @@ too short for that app.) Afterwards the clipboard holds `CLIPCHECK` again.
 2. Press **Ctrl+Alt+W**.
 
 Expected: the page doesn't change, nothing breaks, and the clipboard holds
-`CLIPCHECK`. The tooltip shows `Converted to …` (the paste was simply
+`CLIPCHECK`. The tooltip shows `Fixed layout: …` (the paste was simply
 ignored by the page) — that's by design.
 
 ## 5. Win+V clipboard history
