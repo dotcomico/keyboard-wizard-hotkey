@@ -66,6 +66,17 @@ a = Analysis(
     noarchive=False,
     optimize=0,
 )
+
+# Windows 10+ ships the Universal CRT, so copies of it found on PATH (e.g. from
+# a JDK's bin folder) are redundant and would only bloat the exe.
+a.binaries = [
+    entry
+    for entry in a.binaries
+    if not (
+        entry[0].lower().startswith("api-ms-win-")
+        or entry[0].lower() == "ucrtbase.dll"
+    )
+]
 pyz = PYZ(a.pure)
 
 exe = EXE(
