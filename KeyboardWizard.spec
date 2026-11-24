@@ -50,7 +50,12 @@ a = Analysis(
     binaries=[],
     # `icon=` below only sets the .exe's file icon; the running tray loads
     # assets/icon.ico from sys._MEIPASS, so it must also be bundled as data.
-    datas=[('assets/icon.ico', 'assets')],
+    # LICENSE and the notices are opened from the tray's About menu.
+    datas=[
+        ('assets/icon.ico', 'assets'),
+        ('LICENSE', '.'),
+        ('THIRD_PARTY_NOTICES.txt', '.'),
+    ],
     # pystray picks its backend dynamically; win32timezone is a pywin32
     # runtime import PyInstaller's analysis can miss.
     hiddenimports=['pystray._win32', 'win32timezone'],

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import subprocess
 import sys
 from pathlib import Path
 from typing import Callable
@@ -10,7 +11,7 @@ from typing import Callable
 import pystray
 from PIL import Image, ImageDraw
 
-from kbwizard import APP_DISPLAY_NAME, APP_NAME
+from kbwizard import APP_COPYRIGHT, APP_DISPLAY_NAME, APP_NAME, __version__
 from kbwizard.app import startup
 from kbwizard.app.config import Config
 from kbwizard.app.icon_render import render_supersampled
@@ -19,8 +20,8 @@ from kbwizard.app.status import NOTIFIES, Status
 logger = logging.getLogger(__name__)
 
 
-def _icon_base_dir() -> Path:
-    """Return the directory that contains ``assets/``.
+def _resource_dir() -> Path:
+    """Return the directory that holds ``assets/``, ``LICENSE`` and ``THIRD_PARTY_NOTICES.txt``.
 
     A PyInstaller one-file build extracts bundled data under ``sys._MEIPASS``.
     """
@@ -30,7 +31,11 @@ def _icon_base_dir() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
-_ICON_PATH = _icon_base_dir() / "assets" / "icon.ico"
+_ICON_PATH = _resource_dir() / "assets" / "icon.ico"
+_LICENSE_PATH = _resource_dir() / "LICENSE"
+_NOTICES_PATH = _resource_dir() / "THIRD_PARTY_NOTICES.txt"
+
+_LICENSE_SUMMARY = "Free for personal use. Not for sale."
 
 
 def _load_icon() -> Image.Image:
@@ -99,9 +104,35 @@ class TrayApp:
                     checked=lambda item: self._config.switch_layout_after_convert,
                 ),
                 pystray.Menu.SEPARATOR,
+                pystray.MenuItem("About", self._about_menu()),
                 pystray.MenuItem("Quit", self._handle_quit),
             ),
         )
+
+    def _about_menu(self) -> pystray.Menu:
+        """Build the About submenu: version, owner, license terms and the full texts."""
+        return pystray.Menu(
+            pystray.MenuItem(f"{APP_DISPLAY_NAME} {__version__}", None, enabled=False),
+            pystray.MenuItem(APP_COPYRIGHT, None, enabled=False),
+            pystray.MenuItem(_LICENSE_SUMMARY, None, enabled=False),
+            pystray.Menu.SEPARATOR,
+            pystray.MenuItem("View license", lambda icon, item: self._open_text(_LICENSE_PATH)),
+            pystray.MenuItem(
+                "Third-party notices", lambda icon, item: self._open_text(_NOTICES_PATH)
+            ),
+        )
+
+    def _open_text(self, path: Path) -> None:
+        """Open a bundled text file in Notepad.
+
+        Notepad is named explicitly because ``LICENSE`` has no extension, so
+        ``os.startfile`` would show the "How do you want to open this file?" dialog.
+        """
+        try:
+            subprocess.Popen(["notepad.exe", str(path)])
+        except OSError:
+            logger.exception("Could not open %s", path.name)
+            self._icon.notify(f"Could not open {path.name}", self._title)
 
     def on_status(self, status: Status) -> None:
         """Show ``status`` in the tooltip and menu, plus a balloon if it is in ``NOTIFIES``."""

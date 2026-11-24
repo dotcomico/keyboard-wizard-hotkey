@@ -141,6 +141,10 @@ documented UIPI limitation, not a bug.
 - Untick **Switch keyboard language after convert**, run test 1: text
   converts but the layout stays English. Restart the app: still unticked
   (`config.json` has `"switch_layout_after_convert": false`). Tick it again.
+- **About**: shows `Keyboard Wizard 1.0.0`, the copyright line and
+  `Free for personal use. Not for sale.` (all greyed out). **View license**
+  and **Third-party notices** each open the text in Notepad. Repeat with the
+  built exe (test 11).
 - **Quit**: the icon disappears and the process exits; Ctrl+Alt+W does
   nothing afterwards.
 

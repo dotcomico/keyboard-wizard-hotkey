@@ -62,6 +62,7 @@ Right-click the tray icon to see the last status and the active hotkey, and for:
 
 - **Run at startup**: adds or removes a `KeyboardWizard` value under `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` (per-user, no admin rights). This is the same entry Task Manager's Startup apps tab shows.
 - **Switch keyboard language after convert**: on by default.
+- **About**: the version, copyright and license summary, with **View license** and **Third-party notices**, which open the full texts in Notepad.
 - **Quit**.
 
 Settings are saved in `%APPDATA%\KeyboardWizard\config.json`, created with defaults on first run. Edit it while the app is closed, then start the app again. Unknown keys are dropped, missing keys get defaults, and a corrupt file is reset. Delete the file to reset everything.
