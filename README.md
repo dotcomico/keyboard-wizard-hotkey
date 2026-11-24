@@ -139,6 +139,14 @@ Unit tests fake every OS collaborator (clipboard, `SendInput`, `RegisterHotKey`,
 
 Runs PyInstaller with [KeyboardWizard.spec](KeyboardWizard.spec) and produces `dist\KeyboardWizard.exe`: a single windowed file (tray only, no console) with the icon bundled. UPX compression is off, because packed exes that inject input and use the clipboard are more often flagged by antivirus.
 
+After changing or upgrading a dependency, regenerate the license notices that ship with the exe:
+
+```powershell
+.\.venv\Scripts\python.exe tools\make_notices.py
+```
+
+It rebuilds [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt) from the license files of the installed packages and the Python interpreter.
+
 ### Project layout
 
 ```
@@ -186,3 +194,5 @@ Successor to an earlier hook-based prototype of Keyboard Wizard; this version ha
 Copyright (c) 2026 Dotan Siman Tov. All rights reserved.
 
 Keyboard Wizard is free for personal, non-commercial use. It may not be sold, redistributed without permission, modified or claimed as anyone else's work. See [LICENSE](LICENSE) for the full terms.
+
+The exe also contains open-source components (Python, pystray, Pillow, pywin32, six and the PyInstaller bootloader) that stay under their own licenses; see [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt).
