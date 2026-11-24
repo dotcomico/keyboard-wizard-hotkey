@@ -13,16 +13,22 @@ from importlib.metadata import distribution
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+# Make the project root importable when run as a script.
+sys.path.insert(0, str(REPO_ROOT))
+
+from kbwizard import APP_COPYRIGHT  # noqa: E402
+
 OUTPUT = REPO_ROOT / "THIRD_PARTY_NOTICES.txt"
 
 HEADER = """\
 Keyboard Wizard - Third-Party Notices
 
-Keyboard Wizard is Copyright (c) 2026 Dotan Siman Tov and is licensed under the
-terms in LICENSE. The executable also contains the open-source components
-listed below. Each one stays under its own license, reproduced in full here,
-and nothing in Keyboard Wizard's license limits the rights these licenses give
-you.
+Keyboard Wizard: {copyright}
+It is licensed under the terms in LICENSE.
+
+The executable also contains the open-source components listed below. Each one
+stays under its own license, reproduced in full here, and nothing in Keyboard
+Wizard's license limits the rights these licenses give you.
 
 pystray is licensed under the GNU Lesser General Public License v3. It is
 included unmodified; its source code is available at
@@ -92,6 +98,7 @@ def build() -> str:
             _section(f"{name} {version}", "\n\n".join(_license_texts(dist_name)))
         )
     header = HEADER.format(
+        copyright=APP_COPYRIGHT,
         pystray_version=distribution("pystray").version, summary="\n".join(rows)
     )
     return header + "\n" + "\n".join(sections)

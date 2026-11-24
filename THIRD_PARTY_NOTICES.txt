@@ -1,10 +1,11 @@
 Keyboard Wizard - Third-Party Notices
 
-Keyboard Wizard is Copyright (c) 2026 Dotan Siman Tov and is licensed under the
-terms in LICENSE. The executable also contains the open-source components
-listed below. Each one stays under its own license, reproduced in full here,
-and nothing in Keyboard Wizard's license limits the rights these licenses give
-you.
+Keyboard Wizard: Copyright (c) 2026 Dotan Siman Tov. All rights reserved.
+It is licensed under the terms in LICENSE.
+
+The executable also contains the open-source components listed below. Each one
+stays under its own license, reproduced in full here, and nothing in Keyboard
+Wizard's license limits the rights these licenses give you.
 
 pystray is licensed under the GNU Lesser General Public License v3. It is
 included unmodified; its source code is available at
