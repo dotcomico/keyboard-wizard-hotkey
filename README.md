@@ -5,7 +5,7 @@ Fix text typed in the wrong keyboard layout: select it, press **Ctrl+Alt+W**, an
 **Supports Windows 10 and 11.**
 
 [![Tests](https://github.com/dotcomico/keyboard-wizard-hotkey/actions/workflows/tests.yml/badge.svg)](https://github.com/dotcomico/keyboard-wizard-hotkey/actions/workflows/tests.yml)
-![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue)
+![License: Freeware, all rights reserved](https://img.shields.io/badge/license-freeware%2C%20all%20rights%20reserved-red)
 ![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D6)
 ![Python 3.14](https://img.shields.io/badge/python-3.14-3776AB)
 
@@ -183,4 +183,6 @@ Successor to an earlier hook-based prototype of Keyboard Wizard; this version ha
 
 ## License
 
-[GPL-3.0](LICENSE)
+Copyright (c) 2026 Dotan Siman Tov. All rights reserved.
+
+Keyboard Wizard is free for personal, non-commercial use. It may not be sold, redistributed without permission, modified or claimed as anyone else's work. See [LICENSE](LICENSE) for the full terms.
