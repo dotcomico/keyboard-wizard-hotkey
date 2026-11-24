@@ -21,10 +21,12 @@ The selection is replaced in place, and the window's input language switches to 
 ## Download and use
 
 1. Download the latest **KeyboardWizard** exe from [Releases](https://github.com/dotcomico/keyboard-wizard-hotkey/releases).
-2. Run it. No installer and no admin rights needed. A blue "KW" keycap appears in the system tray (check the `^` overflow area).
+2. Move it to a permanent folder (for example Documents) first: **Run at startup** remembers where the exe is, so moving or deleting it later breaks the startup entry. Then run it. No installer and no admin rights needed. A blue "KW" keycap appears in the system tray (check the `^` overflow area).
    - Windows SmartScreen may warn you because the exe isn't code-signed. Click **More info**, then **Run anyway**.
 3. In any app, select text you typed in the wrong layout and press **Ctrl+Alt+W**.
 4. Optional: right-click the tray icon and tick **Run at startup**.
+
+A Hebrew quick-start, written to paste into a chat message next to the exe, is in [docs/quick-start-he.md](docs/quick-start-he.md).
 
 Both **English (US)** and **Hebrew** keyboards should be installed in Windows (Settings > Time & language > Language & region) for the language switch. Without the target keyboard, the text is still converted and a notification tells you the keyboard is missing.
 
