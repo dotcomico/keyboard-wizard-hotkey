@@ -12,3 +12,7 @@ __version__ = "1.0.0"
 APP_NAME = "KeyboardWizard"
 
 APP_DISPLAY_NAME = "Keyboard Wizard"
+
+#: Shown in the exe's file properties and the tray's About entry.
+APP_AUTHOR = "Dotan Siman Tov"
+APP_COPYRIGHT = f"Copyright (c) 2026 {APP_AUTHOR}. All rights reserved."

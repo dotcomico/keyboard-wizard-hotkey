@@ -137,7 +137,7 @@ Unit tests fake every OS collaborator (clipboard, `SendInput`, `RegisterHotKey`,
 .\build.bat
 ```
 
-Runs PyInstaller with [KeyboardWizard.spec](KeyboardWizard.spec) and produces `dist\KeyboardWizard.exe`: a single windowed file (tray only, no console) with the icon bundled. UPX compression is off, because packed exes that inject input and use the clipboard are more often flagged by antivirus.
+Runs PyInstaller with [KeyboardWizard.spec](KeyboardWizard.spec) and produces `dist\KeyboardWizard.exe`: a single windowed file (tray only, no console) with the icon bundled. Its file properties (Properties > Details) show the version, author and copyright, taken from `kbwizard/__init__.py`. UPX compression is off, because packed exes that inject input and use the clipboard are more often flagged by antivirus.
 
 After changing or upgrading a dependency, regenerate the license notices that ship with the exe:
 

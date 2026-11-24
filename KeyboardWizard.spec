@@ -2,6 +2,46 @@
 # Build: build.bat  (= .venv\Scripts\python -m PyInstaller --clean --noconfirm KeyboardWizard.spec)
 # Output: dist\KeyboardWizard.exe — one file, windowed (tray only, no console).
 
+from PyInstaller.utils.win32.versioninfo import (
+    FixedFileInfo,
+    StringFileInfo,
+    StringStruct,
+    StringTable,
+    VarFileInfo,
+    VarStruct,
+    VSVersionInfo,
+)
+
+from kbwizard import APP_AUTHOR, APP_COPYRIGHT, APP_DISPLAY_NAME, __version__
+
+# Built from the package constants so the Properties > Details tab always
+# matches the running app's version and owner.
+_version_tuple = tuple(int(part) for part in __version__.split(".")) + (0,)
+version_info = VSVersionInfo(
+    ffi=FixedFileInfo(filevers=_version_tuple, prodvers=_version_tuple),
+    kids=[
+        StringFileInfo(
+            [
+                # 0409 = US English, 04B0 = Unicode.
+                StringTable(
+                    "040904B0",
+                    [
+                        StringStruct("CompanyName", APP_AUTHOR),
+                        StringStruct("FileDescription", APP_DISPLAY_NAME),
+                        StringStruct("FileVersion", __version__),
+                        StringStruct("InternalName", "KeyboardWizard"),
+                        StringStruct("LegalCopyright", APP_COPYRIGHT),
+                        StringStruct("OriginalFilename", "KeyboardWizard.exe"),
+                        StringStruct("ProductName", APP_DISPLAY_NAME),
+                        StringStruct("ProductVersion", __version__),
+                    ],
+                )
+            ]
+        ),
+        VarFileInfo([VarStruct("Translation", [0x0409, 0x04B0])]),
+    ],
+)
+
 
 a = Analysis(
     ['kbwizard/main.py'],
@@ -44,4 +84,5 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=['assets/icon.ico'],
+    version=version_info,
 )
