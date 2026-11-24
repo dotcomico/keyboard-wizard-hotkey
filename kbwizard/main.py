@@ -99,6 +99,22 @@ def _acquire_single_instance() -> bool:
     return ctypes.get_last_error() != _ERROR_ALREADY_EXISTS
 
 
+def _enable_startup_on_first_run(config: Config) -> None:
+    """Turn on Run at startup the first time the built exe launches.
+
+    Applied once only, so a later untick in the tray is respected. Source runs
+    are skipped so a development interpreter is never registered.
+    """
+    if config.startup_default_applied or not getattr(sys, "frozen", False):
+        return
+    try:
+        startup.enable()
+    except OSError:
+        logger.exception("Could not enable run at startup on first launch")
+    config.startup_default_applied = True
+    config.save()
+
+
 def _sync_startup_flag(config: Config) -> None:
     """Sync ``config.run_at_startup`` with the Run key, which Task Manager can change."""
     actual = startup.is_enabled()
@@ -117,6 +133,7 @@ def main() -> None:
     _set_dpi_aware()
 
     config = Config.load()
+    _enable_startup_on_first_run(config)
     _sync_startup_flag(config)
     logger.info(
         "%s %s starting (config: %s)", APP_DISPLAY_NAME, __version__, Config.config_path()

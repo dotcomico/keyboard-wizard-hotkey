@@ -154,12 +154,14 @@ documented UIPI limitation, not a bug.
 2. Double-click `dist\KeyboardWizard.exe`. Expected: the tray icon (the real
    keycap, not the fallback) and no console window.
 3. Repeat tests 1–3 with the exe.
-4. Tick **Run at startup**. Check `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
+4. First launch (no `startup_default_applied` in `%APPDATA%\KeyboardWizard\config.json`):
+   **Run at startup** is already ticked. Check `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
    (regedit) has `KeyboardWizard` = `"…\dist\KeyboardWizard.exe"`.
 5. Reboot / sign out and back in. Expected: the tray icon appears on its
    own and test 1 works.
-6. Untick **Run at startup**: the registry value is gone.
-7. Dev variant: from the source run, tick Run at startup and check the
+6. Untick **Run at startup**: the registry value is gone. Quit and start the
+   exe again: it stays unticked (the first-launch default applies once).
+7. Dev variant: a source run never ticks it by itself; tick Run at startup and check the
    value is `"…\.venv\Scripts\pythonw.exe" "…\kbwizard\main.py"`; after
    sign-in the app starts with no console window.
 8. Remove the entry in Task Manager → Startup apps (or regedit) while the

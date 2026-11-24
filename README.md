@@ -21,10 +21,10 @@ The selection is replaced in place, and the window's input language switches to 
 ## Download and use
 
 1. Download the latest **KeyboardWizard** exe from [Releases](https://github.com/dotcomico/keyboard-wizard-hotkey/releases).
-2. Move it to a permanent folder (for example Documents) first: **Run at startup** remembers where the exe is, so moving or deleting it later breaks the startup entry. Then run it. No installer and no admin rights needed. A blue "KW" keycap appears in the system tray (check the `^` overflow area).
+2. Move it to a permanent folder (for example Documents) first: the app starts with Windows from where the exe is, so moving or deleting it later breaks the startup entry. Then run it. No installer and no admin rights needed. A blue "KW" keycap appears in the system tray (check the `^` overflow area).
    - Windows SmartScreen may warn you because the exe isn't code-signed. Click **More info**, then **Run anyway**.
 3. In any app, select text you typed in the wrong layout and press **Ctrl+Alt+W**.
-4. Optional: right-click the tray icon and tick **Run at startup**.
+4. The first launch turns on **Run at startup**, so it starts with Windows from now on. To turn that off, right-click the tray icon and untick **Run at startup**; it stays off.
 
 A Hebrew quick-start, written to paste into a chat message next to the exe, is in [docs/quick-start-he.md](docs/quick-start-he.md).
 
@@ -62,7 +62,7 @@ Most layout-fixer tools watch every keystroke to guess when you've typed gibberi
 
 Right-click the tray icon to see the last status and the active hotkey, and for:
 
-- **Run at startup**: adds or removes a `KeyboardWizard` value under `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` (per-user, no admin rights). This is the same entry Task Manager's Startup apps tab shows.
+- **Run at startup**: adds or removes a `KeyboardWizard` value under `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` (per-user, no admin rights). This is the same entry Task Manager's Startup apps tab shows. The exe turns it on at its first launch; running from source never does.
 - **Switch keyboard language after convert**: on by default.
 - **About**: the version, copyright and license summary, with **View license** and **Third-party notices**, which open the full texts in Notepad.
 - **Quit**.
@@ -73,6 +73,7 @@ Settings are saved in `%APPDATA%\KeyboardWizard\config.json`, created with defau
 |---|---|---|
 | `hotkey` | `"ctrl+alt+w"` | The global hotkey: one or more of `ctrl`, `alt`, `shift`, `win` plus one key `a`-`z`, `0`-`9` or `f1`-`f24`, joined with `+`. An invalid value falls back to `ctrl+alt+w`. The tray tooltip and menu show the active hotkey. |
 | `run_at_startup` | `false` | Mirrors the Run-key entry; the registry is re-read at every launch. Use the tray toggle. |
+| `startup_default_applied` | `false` | Set after the exe's first launch turns on Run at startup, so an untick is respected afterwards. |
 | `switch_layout_after_convert` | `true` | Switch the window's input language to the target after pasting. |
 | `keep_result_on_clipboard` | `false` | Leave the converted text on the clipboard instead of restoring what was there before. |
 

@@ -28,6 +28,9 @@ class Config:
     #: Cached Run-key state so the tray renders without a registry read;
     #: the registry remains the source of truth.
     run_at_startup: bool = False
+    #: Set once the exe has turned on Run at startup by default, so a user
+    #: who later unticks it isn't overridden on the next launch.
+    startup_default_applied: bool = False
     #: After pasting, switch the window's input language to the target.
     switch_layout_after_convert: bool = True
     #: Leave the converted text on the clipboard instead of restoring the
