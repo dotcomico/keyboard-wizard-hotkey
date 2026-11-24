@@ -32,5 +32,14 @@ desktop.ini
 
 # Local-only notes (AI agent instructions, build plan)
 CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
 PLAN.md
 .claude/
+
+# Secrets and local environment
+.env
+.env.*
+
+# Local app data copied in for debugging (may contain user config)
+config.json
